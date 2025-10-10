@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <h2>Frequently Asked Questions</h2>
+  <ul>
+    <li>
+      <h3>What is your return policy?</h3>
+      <p>We accept returns within 30 days of purchase with the original receipt.</p>
+    </li>
+    <li>
+      <h3>Do you offer international shipping?</h3>
+      <p>Yes, we ship to most countries worldwide with additional shipping costs.</p>
+    </li>
+    <li>
+      <h3>How can I track my order?</h3>
+      <p>Once your order ships, you’ll receive an email with a tracking link.</p>
+    </li>
+  </ul>
+  <script>
+    const ul=document.querySelector('ul');
+    Array.from(ul.getElementsByTagName('li')).forEach(l => l.addEventListener('click', function(e) {
+      const el=Array.from(l.getElementsByTagName('p'))[0];
+      const computedStyles=window.getComputedStyle(el);
+      if(computedStyles.display == "block"){
+        el.style.setProperty("display", "none");
+      } else {
+        el.style.setProperty("display", "block");
+      }
+    }));
+  </script>
+</body>
+</html>
