@@ -1,38 +1,87 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    :root {
+      --border-color: #ccc;
+    }
+
+    .container h2 {
+      text-align: center;
+    }
+
+    .accordion-ls-group {
+      list-style: none;
+      margin: 0 auto;
+      border: 1px solid var(--border-color);
+      padding: 0;
+      min-width: 500px;
+      width: fit-content;
+      border-radius: 1.25em;
+    }
+
+    .accordion-ls-group li {
+      border-top: 1px solid var(--border-color);
+      padding: 0 1em;
+    }
+
+    .accordion-ls-group li h3 {
+      --content: "+";
+    }
+
+    .accordion-ls-group li h3::before {
+      content: var(--content);
+      font-size: 1.05em;
+      padding: 0 0.5em 0 0;
+    }
+
+    .accordion-ls-group li:hover {
+      cursor: pointer;
+    }
+
+    .accordion-ls-group li:first-child {
+      border-top: none;
+    }
+  </style>
 </head>
+
 <body>
-  <h2>Frequently Asked Questions</h2>
-  <ul>
-    <li>
-      <h3>What is your return policy?</h3>
-      <p>We accept returns within 30 days of purchase with the original receipt.</p>
-    </li>
-    <li>
-      <h3>Do you offer international shipping?</h3>
-      <p>Yes, we ship to most countries worldwide with additional shipping costs.</p>
-    </li>
-    <li>
-      <h3>How can I track my order?</h3>
-      <p>Once your order ships, you’ll receive an email with a tracking link.</p>
-    </li>
-  </ul>
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <ul class="accordion-ls-group">
+      <li>
+        <h3>What is your return policy?</h3>
+        <p>We accept returns within 30 days of purchase with the original receipt.</p>
+      </li>
+      <li>
+        <h3>Do you offer international shipping?</h3>
+        <p>Yes, we ship to most countries worldwide with additional shipping costs.</p>
+      </li>
+      <li>
+        <h3>How can I track my order?</h3>
+        <p>Once your order ships, you’ll receive an email with a tracking link.</p>
+      </li>
+    </ul>
+  </div>
   <script>
     const ul=document.querySelector('ul');
-    Array.from(ul.getElementsByTagName('li')).forEach(l => l.addEventListener('click', function(e) {
+    Array.from(ul.getElementsByTagName('li')).forEach(l => l.addEventListener('click', function (e) {
       const el=Array.from(l.getElementsByTagName('p'))[0];
       const computedStyles=window.getComputedStyle(el);
-      if(computedStyles.display == "block"){
+      if (computedStyles.display == "block") {
         el.style.setProperty("display", "none");
+        l.firstElementChild.style.setProperty("--content", "\"-\"")
       } else {
         el.style.setProperty("display", "block");
+        l.firstElementChild.style.setProperty("--content", "\"+\"");
       }
     }));
   </script>
 </body>
+
 </html>
