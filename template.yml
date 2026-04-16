@@ -12,3 +12,6 @@ Outputs:
   BucketName:
     Value: !Ref MyS3Bucket
     Description: The name of the S3 bucket
+    Export:
+      Name: !Sub "${AWS::StackName}-BucketName"
+    
