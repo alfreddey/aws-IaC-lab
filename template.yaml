@@ -1,16 +1,25 @@
-AWSTemplateFormatVersion: "2010-09-09"
-Description: Simple S3 Bucket
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Simple IAM Role Example
 
 Resources:
-  MyS3Bucket:
-    Type: AWS::S3::Bucket
+  MyIAMRole:
+    Type: AWS::IAM::Role
     Properties:
-      BucketName: my-simple-bucket-123456
-
-Outputs:
-  BucketName:
-    Value: !Ref MyS3Bucket
-    Description: The name of the S3 bucket
-    Export:
-      Name: !Sub "${AWS::StackName}-BucketName"
-    
+      RoleName: MySimpleRole
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: S3ReadAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:ListBucket
+                  - s3:GetObject
+                Resource: "*"
