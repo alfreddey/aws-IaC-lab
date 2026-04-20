@@ -57,7 +57,7 @@ Resources:
   EC2User1:
     Type: AWS::IAM::User
     Properties:
-      UserName: ec2-user1
+      UserName: ec2-user1-temp
       Groups:
         - !Ref EC2Group
       LoginProfile:
@@ -67,7 +67,7 @@ Resources:
   EC2User2:
     Type: AWS::IAM::User
     Properties:
-      UserName: ec2-user2
+      UserName: ec2-user2-temp
       Groups:
         - !Ref EC2Group
       LoginProfile:
