@@ -9,7 +9,7 @@ Resources:
   PasswordSecret:
     Type: AWS::SecretsManager::Secret
     Properties:
-      Name: iam-temp-password-00
+      Name: iam-temp-password
       GenerateSecretString:
         SecretStringTemplate: '{}'
         GenerateStringKey: password
@@ -50,6 +50,9 @@ Resources:
                   - ec2:DescribeImages
                   - ec2:DescribeKeyPairs
                 Resource: "*"
+                Condition:
+                  StringLike:
+                    aws:PrincipalArn: "arn:aws:iam::*:user/ec2-user2-temp"
 
   ### ---------------------------
   ### IAM Users
