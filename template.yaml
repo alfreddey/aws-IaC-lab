@@ -15,8 +15,9 @@ Resources:
               - ec2:DescribeInstances
               - ec2:DescribeImages
               - ec2:DescribeKeyPairs
-              - s3:List*
-            Resources: "*"
+              - s3:ListAllMyBuckets
+              - s3:ListBucket
+            Resource: "*"
 
 
   ### ---------------------------
