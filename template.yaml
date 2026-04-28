@@ -50,8 +50,17 @@ Resources:
                   - ec2:DescribeImages
                   - ec2:DescribeKeyPairs
                 Resource: "*"
+
+        - PolicyName: EC2User2DenyPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statements:
+              - Effect: Deny
+                Action:
+                  - ec2:RunInstances
+                Resource: "*"
                 Condition:
-                  StringLike:
+                  ArnEquals:
                     aws:PrincipalArn: "arn:aws:iam::*:user/ec2-user2-temp"
 
   ### ---------------------------
