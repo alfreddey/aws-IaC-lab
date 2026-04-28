@@ -3,10 +3,10 @@ Description: IAM Users + Groups + Secret Password Automation
 
 Resources:
 
-  UserBoundaryPolicy:
+  UserBoundaryPolicyV2:
     Type: AWS::IAM::ManagedPolicy
     Properties:
-      ManagedPolicyName: UserStandardBoundary
+      ManagedPolicyName: UserStandardBoundaryV2
       PolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -87,7 +87,7 @@ Resources:
       UserName: ec2-user2-temp
       Groups:
         - !Ref EC2Group
-      PermissionsBoundary: !Ref UserBoundaryPolicy
+      PermissionsBoundary: !Ref UserBoundaryPolicyV2
       LoginProfile:
         Password: !Sub '{{resolve:secretsmanager:${PasswordSecret}:SecretString:password}}'
         PasswordResetRequired: true
